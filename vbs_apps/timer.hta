@@ -1,0 +1,42 @@
+
+<html>
+<head>
+<title>SimpleStopWatch</title>
+<HTA:APPLICATION
+APPLICATIONNAME="SimpleStopWatch"
+ID="HtaStopWatch"
+BORDER="dialog"
+INNERBORDER="no"
+MAXIMIZEBUTTON="no"
+SCROLL="no"
+VERSION="1.0"/>
+</head>
+
+<script language="VBScript">
+
+Dim tOut
+startTime = Now
+
+Sub DisplayClock()
+ document.all.disp.innerText = FormatDateTime(Now - startTime,0)
+End Sub
+
+Sub Window_OnLoad
+ Dim width,height
+ width=250
+ height=200
+ Self.ResizeTo width,height
+ tOut = setInterval("DisplayClock()", 100)
+End Sub
+
+Sub ResetClickButtonOK()
+ startTime = Now
+End Sub
+
+</script>
+
+<body style="text-align:center; font-size:30pt" bgcolor="buttonface">
+<div id="disp"></div>
+<input type="button" style="width: 220px; height: 90px" name="RESET" id="RESET" value="RESET" onclick="ResetClickButtonOK">
+</body>
+</html>
